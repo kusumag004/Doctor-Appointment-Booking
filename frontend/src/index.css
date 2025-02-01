@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+
+@layer base {
+  .bg-primary {
+    background-color: #4913dd; /* Replace this with your color */
+  }
+}
+
+.active hr{
+  @apply block
+}
+
+@layer base {
+  .bg-primary {
+    background-color: #4913dd; /* Replace this with your color */
+  }
+  
+  /* Custom grid template */
+  .grid-cols-auto {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+::-webkit-scrollbar{
+  @apply hidden
+}
+
+@media (max-width:768px) {
+  .active p{
+    @apply text-white bg-[#4913dd]
+    /* bg-primary */
+  }
+}
