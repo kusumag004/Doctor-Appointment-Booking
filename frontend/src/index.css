@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
 
-@layer base {
-  .bg-primary {
-    background-color: #4913dd; /* Replace this with your color */
-  }
-}
 
 .active hr{
   @apply block
@@ -13,7 +8,7 @@
 
 @layer base {
   .bg-primary {
-    background-color: #4913dd; /* Replace this with your color */
+    background-color: #7151E5; /* Replace this with your color */
   }
   
   /* Custom grid template */
@@ -32,3 +27,4 @@
     /* bg-primary */
   }
 }
+
