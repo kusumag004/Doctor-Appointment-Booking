@@ -91,6 +91,7 @@ const loginAdmin=async(req,res)=>{
 
 const allDoctors = async(req,res) => {
     try {
+        console.log("API Hit"); 
         const doctors = await doctorModel.find({}).select('-password')
         res.json({success:true,doctors})
     } catch (error) {
