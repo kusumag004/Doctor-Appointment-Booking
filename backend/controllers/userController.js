@@ -176,7 +176,7 @@ const imageUpload = await cloudinary.uploader.upload(imageFile.path,{resource_ty
 
 const imageURL= imageUpload.secure_url
 
-await userMidel.findByIdAndUpdate(userId, {image:imageURL})
+await userModel.findByIdAndUpdate(userId, {image:imageURL})
 
 
 }
