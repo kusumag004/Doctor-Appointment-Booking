@@ -1,11 +1,12 @@
 import React, {useContext,  useState } from 'react';
-
+import { assets } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 const MyProfile = () => {
 
  const {userData,setUserData} = useContext (AppContext)
 
   const [isEdit, setIsEdit] = useState(false)
+  const [image, setImage] = useState(false)
 
   return userData && (
     <div className='max-w-lg flex flex-col gap-2 text-sm'>
@@ -13,9 +14,16 @@ const MyProfile = () => {
 
        {
         isEdit
-          ? <label htmlFor="">
+          ? <label htmlFor="image">
+<div className='inline-block relative cursor-pointer'>
+  <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image): userData.image} alt=""/>
+  <img className='w-10 absolute botto-12 right-12'src={image ? '': assets.upload_icon} alt=""/>
+ 
 
-         
+
+
+</div>
+         <input onChange={(e)=>setImage(e.target.files[0])}  type="file" id="image" hidden/>
 
           </label>
            :<img className='w-36 rounded' src={userData.image} alt="" />
