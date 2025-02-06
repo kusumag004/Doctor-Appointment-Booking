@@ -3,10 +3,19 @@ import { assets } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 const MyProfile = () => {
 
- const {userData,setUserData} = useContext (AppContext)
+ const {userData,setUserData, token, backendUrl, loadUserProfileData} = useContext (AppContext)
 
   const [isEdit, setIsEdit] = useState(false)
   const [image, setImage] = useState(false)
+
+  const updateUserProfilData = async () => {
+    if (image) {
+      // Assuming you want to store the image in userData (or upload to a server)
+      setUserData(prev => ({ ...prev, image: URL.createObjectURL(image) }));
+    }
+    setIsEdit(false);
+  };
+  
 
   return userData && (
     <div className='max-w-lg flex flex-col gap-2 text-sm'>
@@ -17,7 +26,7 @@ const MyProfile = () => {
           ? <label htmlFor="image">
 <div className='inline-block relative cursor-pointer'>
   <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image): userData.image} alt=""/>
-  <img className='w-10 absolute botto-12 right-12'src={image ? '': assets.upload_icon} alt=""/>
+  <img className='w-10 absolute botto-12 right-12'src={image ? '': assets.upload_icon } alt=""/>
  
 
 
@@ -97,7 +106,13 @@ const MyProfile = () => {
       <div className='mt-10'>
         {
           isEdit
-          ? <button className='border border-primary px-8 py-2 rounded-full hover:bg-blue-400 hover:text-white transition-all' onClick={()=>setIsEdit(false)}>Save information</button>
+          ? <button
+  className='border border-primary px-8 py-2 rounded-full hover:bg-blue-400 hover:text-white transition-all'
+  onClick={updateUserProfilData} // Use the new function
+>
+  Save information
+</button>
+
           : <button className='border border-primary px-8 py-2 rounded-full hover:bg-blue-400 hover:text-white transition-all' onClick={()=>setIsEdit(true)}>Edit</button>
         }
       </div>
