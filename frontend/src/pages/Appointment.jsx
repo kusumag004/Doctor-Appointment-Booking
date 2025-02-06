@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { assets } from '../assets/assets';
 import RelatedDoctors from '../components/RelatedDoctors';
@@ -8,8 +8,14 @@ import RelatedDoctors from '../components/RelatedDoctors';
 const Appointment = () => {
 
 const {docId} = useParams()
-const {doctors,currencySymbol} = useContext(AppContext)
+const {doctors,currencySymbol,backendUrl, token, getDctorsData} = useContext(AppContext)
 const daysOfWeek = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+
+
+const navigate = useNavigate()
+
+
+
 
 const [docInfo,setDocInfo] = useState(null)
 const [docSlots,setDocSlots] = useState([])
@@ -61,6 +67,22 @@ const getAvaliableSlots = async () => {
 }
 
 
+
+
+const bookAppointment = async()=>{
+
+if(!token){
+
+  toast.warn('login to book appointment')
+  return navigate('/login')
+}
+
+
+
+}
+
+
+
 useEffect(() => {
   fetchDocInfo()
 },[doctors,docId])
@@ -99,7 +121,12 @@ useEffect(() => {
         </p>
       </div>  
       </div>
+
+
+
       {/*-------Booking slots--------- */}
+
+
       <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
         <p>Booking slots</p>
         <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
@@ -119,8 +146,11 @@ useEffect(() => {
             </p>
           ))}
         </div>
-        <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an appointment</button>
+        <button onclick={bookAppointment} className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an appointment</button>
       </div>
+
+
+
       {/*Listing related doctors */}
       <RelatedDoctors docId={docId} speciality={docInfo.speciality}/>
     </div>

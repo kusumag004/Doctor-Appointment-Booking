@@ -152,4 +152,4 @@ toast.error(error.message)
   )
 }
 
-export default MyProfile;
+export default MyProfile;  
