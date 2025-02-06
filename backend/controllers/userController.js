@@ -212,7 +212,7 @@ if(!docData.available){
 
 }
 
-let slots_booked=  docData.slots.booked
+let slots_booked=  docData.slots_booked
 
 
 //checking slots availability
@@ -233,7 +233,7 @@ slots_booked[slotDate].push(slotTime)
 else {
 
 
-slots_booked[slotdate]=[]
+slots_booked[slotDate]= []
 slots_booked[slotDate].push(slotTime)
     }
 
@@ -256,14 +256,14 @@ date: Date.now()
 
 }
 
-const newAppointent = new appointmentModel(appointmentData)
+const newAppointment = new appointmentModel(appointmentData)
 
 await newAppointment.save()
 
 
 await doctorModel.findByIdAndUpdate(docId,{slots_booked})
 
-res.json({success:true,message:'Appointmnet booked'})
+res.json({success:true,message:'Appointment booked'})
 
 
 }catch(error){

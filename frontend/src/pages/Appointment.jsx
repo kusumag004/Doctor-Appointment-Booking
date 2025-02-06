@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { assets } from '../assets/assets';
 import RelatedDoctors from '../components/RelatedDoctors';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Appointment = () => {
@@ -146,7 +148,13 @@ useEffect(() => {
             </p>
           ))}
         </div>
-        <button onclick={bookAppointment} className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an appointment</button>
+        <button 
+  onClick={bookAppointment} 
+  className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6 cursor-pointer"
+>
+  Book an appointment
+</button>
+
       </div>
 
 
