@@ -129,8 +129,8 @@ try{
 
       const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password })
       if (data.success) {
-        setAToken(data.token)
         localStorage.setItem('aToken', data.token)
+        setAToken(data.token)
       } else {
         toast.error(data.message )
       }
@@ -139,8 +139,8 @@ try{
 
       const { data } = await axios.post(backendUrl + '/api/doctor/login', { email, password })
       if (data.success) {
-        setDToken(data.token)
         localStorage.setItem('dToken', data.token)
+        setDToken(data.token)
         console.log(data.token)
       } else {
         toast.error(data.message)

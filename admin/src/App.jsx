@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Login from './pages/login'
+import Login from './pages/Login.jsX'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AdminContext } from './context/AdminContext';
@@ -29,6 +29,9 @@ const App = () => {
       <div className = 'flex items-start'>
         <Sidebar />
         <Routes >
+
+          
+        {/*Admin Route */}  
           <Route path = '/' element = {<></>} />
           <Route path = '/admin-dashboard' element = {<Dashboard/>} />
           <Route path = '/all-appointments' element = {<AllApointments/>} />
